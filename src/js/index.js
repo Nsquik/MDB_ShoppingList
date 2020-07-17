@@ -1,5 +1,8 @@
 import * as mdb from 'mdb-ui-kit';
-import { newFormWithConfig } from './formBuilder';
+import './formBuilder';
+import storageFactory from './storage';
 
-console.log(newFormWithConfig);
+const storage = storageFactory();
+storage.initializeCategories();
+
 export default mdb;

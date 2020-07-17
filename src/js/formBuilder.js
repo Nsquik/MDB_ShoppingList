@@ -1,6 +1,6 @@
 import config from '../config';
 import Form from './form';
-import { loopCategories } from './utlis.js';
+import { loopCategories, appendToParent } from './utlis';
 
 const { form } = config;
 class FormBuilder {
@@ -27,10 +27,20 @@ class FormBuilder {
 
     loopCategories((category) => {
       const option = document.createElement('option');
-      option.value = category.name;
-      option.text = category.name;
-      option.id = category.name.toLowerCase();
-      select.appendChild(option);
+
+      appendToParent(
+        select,
+        option,
+        {
+          id: category.name.toLowerCase(),
+          value: category.name,
+        },
+        category.name
+      );
+      //   option.value = category.name;
+      //   option.text = category.name;
+      //   option.id = category.name.toLowerCase();
+      //   select.appendChild(option);
     });
   }
 

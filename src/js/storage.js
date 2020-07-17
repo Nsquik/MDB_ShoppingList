@@ -1,10 +1,15 @@
-// import config from '../config';
-
-// const { categories } = config;
+// import { loopCategories } from './utlis';
 
 const storageFactory = () => {
   return {
-    initializeCatogires: () => {},
+    initializeCategories: () => {
+      localStorage.setItem(
+        'categories',
+        JSON.stringify({
+          napoje: ['test'],
+        })
+      );
+    },
   };
 };
 
