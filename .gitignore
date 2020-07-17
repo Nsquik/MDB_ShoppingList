@@ -1,11 +1,17 @@
 # dependencies
 node_modules
 
+__tests__
+
+
 # production
 /dist
 
 # misc
 .DS_Store
+
+config.js
+
 
 npm-debug.log
 yarn-error.log
