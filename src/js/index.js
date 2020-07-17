@@ -1,5 +1,5 @@
 import * as mdb from 'mdb-ui-kit';
+import { newFormWithConfig } from './formBuilder';
 
-export default {
-  mdb,
-};
+console.log(newFormWithConfig);
+export default mdb;
