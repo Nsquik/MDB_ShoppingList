@@ -13,7 +13,6 @@ class FormBuilder {
       {},
       ...fields.map((field) => ({ [field.accessName]: document.getElementById(field.id) }))
     );
-
     return this;
   }
 
@@ -37,10 +36,6 @@ class FormBuilder {
         },
         category.name
       );
-      //   option.value = category.name;
-      //   option.text = category.name;
-      //   option.id = category.name.toLowerCase();
-      //   select.appendChild(option);
     });
   }
 
@@ -54,5 +49,12 @@ export const newFormWithConfig = new FormBuilder(form.id)
   .withFields(form.fields)
   .withSubmit(form.submit)
   .build();
+
+console.log(newFormWithConfig);
+
+newFormWithConfig.onSubmit((e) => {
+  e.preventDefault();
+  newFormWithConfig.validate();
+});
 
 export default FormBuilder;
