@@ -1,20 +1,27 @@
 import { loopCategories } from './utlis';
 
 const storageFactory = () => {
-  //   const initialState = Object.assign({}, ...categories.map((item) => ({ [item.name]: [] })));
+  // ======== PRIVATE =========
   const addToLocalStorage = (to, value) => {
     localStorage.setItem(to, JSON.stringify(value));
   };
 
   const getLocalStorage = (item) => {
-    return localStorage.getItem(item);
+    return JSON.parse(localStorage.getItem(item));
   };
-
+  // ========= PUBLIC ==========
   return {
     initializeCategories: () => {
       loopCategories(({ name }) => {
         !getLocalStorage(name) && addToLocalStorage(name, []);
       });
+    },
+    addItem: (category, item) => {
+      if (category && item) {
+        addToLocalStorage(category, [...getLocalStorage(category), item]);
+      } else {
+        return;
+      }
     },
   };
 };
