@@ -12,4 +12,6 @@ storage.addItem('Owoce', {
   id: 39821983,
 });
 
+storage.removeItem('Owoce', 39821983);
+
 export default mdb;
