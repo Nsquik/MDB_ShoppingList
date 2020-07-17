@@ -1,7 +1,8 @@
 import config from '../config';
 import Form from './form';
+import { loopCategories } from './utlis.js';
 
-const { form, categories } = config;
+const { form } = config;
 class FormBuilder {
   constructor(formId) {
     this.form = document.getElementById(formId);
@@ -24,11 +25,11 @@ class FormBuilder {
   insertOptions() {
     const select = this.fields.category;
 
-    categories.forEach((category) => {
+    loopCategories((category) => {
       const option = document.createElement('option');
       option.value = category.name;
       option.text = category.name;
-      option.id = `category-${category.id}`;
+      option.id = category.name.toLowerCase();
       select.appendChild(option);
     });
   }

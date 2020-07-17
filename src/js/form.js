@@ -4,8 +4,6 @@ class Form {
     this.submit = submit;
     this.fields = fields;
   }
-
-  insertCategories() {}
 }
 
 export default Form;
