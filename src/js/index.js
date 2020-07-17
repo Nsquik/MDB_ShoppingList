@@ -9,9 +9,15 @@ storage.addItem('Owoce', {
   quantity: 128,
   quantity_type: 'kg',
   category: 'owoce',
-  id: 39821983,
+  id: 30,
 });
 
-storage.removeItem('Owoce', 39821983);
+storage.editItem('Owoce', 30, {
+  item: 'Cola',
+  quantity: 15,
+  quantity_type: 'szt',
+  category: 'Napoje',
+  id: 32,
+});
 
 export default mdb;
