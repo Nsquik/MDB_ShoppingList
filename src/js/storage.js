@@ -2,8 +2,9 @@ import { loopCategories } from '@js/utils';
 
 const storageFactory = () => {
   // ======== PRIVATE =========
-  const addToLocalStorage = (category, value) => {
-    localStorage.setItem(category, JSON.stringify(value));
+
+  const addToLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
   };
 
   const getLocalStorage = (category) => {
@@ -30,7 +31,8 @@ const storageFactory = () => {
   };
   // ========= PUBLIC ==========
   return {
-    initializeCategories: () => {
+    initialize: () => {
+      addToLocalStorage('currentCategory', null);
       loopCategories(({ name }) => {
         !getLocalStorage(name) && addToLocalStorage(name, []);
       });
@@ -55,6 +57,15 @@ const storageFactory = () => {
       } else {
         return;
       }
+    },
+    getItems: (category) => {
+      return getLocalStorage(category);
+    },
+    getCurrentCategory: () => {
+      return getLocalStorage('currentCategory');
+    },
+    setCurrentCategory: (category) => {
+      addToLocalStorage('currentCategory', category);
     },
   };
 };

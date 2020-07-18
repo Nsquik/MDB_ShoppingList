@@ -5,10 +5,9 @@ import categoryPicker from './categoryPicker';
 import dropZone from './dropZone';
 
 const storage = storageFactory();
-storage.initializeCategories();
+storage.initialize();
 const catPicker = categoryPicker();
 catPicker.initCategories();
-
 const zone = dropZone();
 zone.initDropZone();
 

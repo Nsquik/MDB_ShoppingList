@@ -1,14 +1,37 @@
+/* eslint-disable indent */
 import { addEvent } from '@js/utils';
+import UI from '@js/UI';
+import storageFactory from './storage';
 
 const dropZone = () => {
   const zone = document.getElementById('holder');
-  console.log(zone);
+  const ui = UI();
+  const storage = storageFactory();
+
+  const renderUI = (category) => {
+    const items = storageFactory().getItems(category);
+
+    storage.getCurrentCategory() === category
+      ? null
+      : (() => {
+          if (items.length) {
+            ui.reset();
+            storage.setCurrentCategory(category);
+            ui.render(items);
+          } else {
+            ui.reset();
+            console.log('no items');
+          }
+        })();
+  };
+
   const addOnDrop = addEvent('drop', (e) => {
     e.preventDefault();
     e.preventDefault();
-    console.log(e);
+    renderUI(e.dataTransfer.getData('text'));
     zone.classList.remove('drop__zone--in');
   });
+
   const addOnDragOver = addEvent('dragover', (e) => {
     e.preventDefault();
     e.stopPropagation();

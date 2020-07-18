@@ -1,4 +1,5 @@
 .form {
+  flex: 30%;
   @include flex-column(flex-start, flex-start);
   &__title {
     font-weight: 600;
@@ -83,13 +84,13 @@
   }
 
   &__field {
-    @include flex-column(center, center);
+    @include flex-column(flex-start, center);
     &--quantity {
       flex-direction: row;
       align-items: flex-end;
     }
     &-wrapper {
-      @include flex-column(center, center);
+      @include flex-column(flex-start, center);
     }
   }
 }
