@@ -1,4 +1,4 @@
-import storageFactory from '../storage';
+import storageFactory from '@js/storage';
 
 const storage = storageFactory();
 class Form {

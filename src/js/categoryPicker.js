@@ -1,13 +1,14 @@
-import { loopCategories, appendToParent, addEvent } from '@js/utlis';
+import { loopCategories, appendToParent, addEvent } from '@js/utils';
 import config from '~/config';
 
 const { categoryContainer } = config;
 
 const categoryPicker = () => {
   const categoryList = document.getElementById(categoryContainer);
-  const addDragStart = addEvent('dragstart', () => {
-    console.log('draguje');
+  const addDragStart = addEvent('dragstart', (e) => {
+    e.dataTransfer.setData('text', e.target.id);
   });
+
   const addEventsToCategory = (el) => {
     addDragStart(el);
   };
@@ -20,7 +21,7 @@ const categoryPicker = () => {
         const addedNode = appendToParent(categoryList, categoryItem, {
           class: 'category__item',
           draggable: 'true',
-          value: category.name,
+          id: category.name,
         });
 
         addEventsToCategory(addedNode);

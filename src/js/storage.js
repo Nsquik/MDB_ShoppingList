@@ -1,4 +1,4 @@
-import { loopCategories } from '@js/utlis';
+import { loopCategories } from '@js/utils';
 
 const storageFactory = () => {
   // ======== PRIVATE =========
