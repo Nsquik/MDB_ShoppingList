@@ -8,10 +8,17 @@ export const loopCategories = (cb) => {
   });
 };
 
-export const appendToParent = (parentNode, node, attributes = [], text = '') => {
+export const appendToParent = (parentNode, node, attributes = {}, text = '') => {
   Object.entries(attributes).forEach((attr) => {
     node.setAttribute(attr[0], attr[1]);
   });
   node.textContent = text;
   parentNode.appendChild(node);
+  return node;
+};
+
+export const addEvent = (type, cb) => {
+  return function (el) {
+    el.addEventListener(type, cb);
+  };
 };

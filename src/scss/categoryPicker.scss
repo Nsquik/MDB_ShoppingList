@@ -1,0 +1,22 @@
+.category__list {
+  display: grid;
+  height: max-content;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+
+  grid-gap: 2rem 4rem;
+  &--wrapper {
+    height: 47rem;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+}
+
+.category__item {
+  background-color: $secondary-color;
+  color: $main-color;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
