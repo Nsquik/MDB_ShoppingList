@@ -1,6 +1,6 @@
 import * as mdb from 'mdb-ui-kit';
-import './formBuilder';
-import storageFactory from './storage';
+import '@js/form/formBuilder';
+import storageFactory from '@js/storage';
 
 const storage = storageFactory();
 storage.initializeCategories();

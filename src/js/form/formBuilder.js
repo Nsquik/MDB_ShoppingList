@@ -1,6 +1,6 @@
-import config from '../config';
-import Form from './form';
-import { loopCategories, appendToParent } from './utlis';
+import { loopCategories, appendToParent } from '@js/utlis';
+import Form from '@js/form/form';
+import config from '~/config';
 
 const { form } = config;
 class FormBuilder {
