@@ -1,3 +1,6 @@
+import storageFactory from '../storage';
+
+const storage = storageFactory();
 class Form {
   constructor(form, fields, submit) {
     this.form = form;
@@ -11,7 +14,20 @@ class Form {
 
   showError = () => {};
 
-  addItem = () => {};
+  addItem = () => {
+    const category = this.fields.category.value;
+    const quantityType = this.fields.switch.checked ? 'kg' : 'szt';
+
+    storage.addItem(category, {
+      item: this.fields.name.value,
+      quantity: this.fields.quantity.value,
+      quantity_type: quantityType,
+      category,
+      id: Date.now(),
+    });
+
+    this.form.reset();
+  };
 
   validate = () => {
     const messages = [];

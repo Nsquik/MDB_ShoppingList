@@ -1,0 +1,43 @@
+html {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 62.5%; // 1rem - 10px
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: $background-color;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Helvetica Neue', sans-serif;
+  color: $font-color;
+  font-size: 1.7rem;
+}
+
+.root {
+  padding: 3rem;
+}
+
+.manager {
+  width: max-content;
+}
+
+::selection {
+  background: $main-color;
+}
+
+input {
+  padding: 0.5rem;
+  border: none;
+  color: #fff;
+}

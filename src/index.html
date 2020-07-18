@@ -9,10 +9,10 @@
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
+
     <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
     />
     <!-- Main css file -->
     <link rel="stylesheet" href="css/index.min.css" />
@@ -24,10 +24,13 @@
     <!-- Start your project here-->
     <div class="root">
       <aside class="manager">
-        <form id="form">
+        <form id="form" class="form">
+          <h3 class="form__title">Dodaj nowy produkt:</h3>
+
           <div class="form__field">
-            <label for="form__name">Nazwa produktu:</label>
+            <label for="form__name">Nazwa produktu</label>
             <input
+              class="form__input"
               type="text"
               id="form__name"
               maxlength="256"
@@ -39,10 +42,11 @@
             />
           </div>
 
-          <div class="form__field">
+          <div class="form__field form__field--quantity">
             <section class="form__field-wrapper">
-              <label for="form__quantity">Ilość produktu:</label>
+              <label for="form__quantity">Ilość produktu</label>
               <input
+                class="form__input"
                 type="number"
                 id="form__quantity"
                 required
@@ -52,19 +56,27 @@
                 aria-valuemin="0"
               />
             </section>
-            <section class="switch">
-              <input type="checkbox" id="form__quantity-switch" aria-required="false" />
-            </section>
+            <div class="switch">
+              <label>szt</label>
+              <input
+                type="checkbox"
+                id="form__quantity-switch"
+                class="form__quantity-switch"
+                aria-required="false"
+              />
+              <span class="lever"></span>kg
+            </div>
           </div>
           <div class="form__field">
-            <label for="form__category">Kategoria:</label>
-            <select id="form__category" required aria-required="true">
+            <label for="form__category">Kategoria</label>
+            <select class="form__select" id="form__category" required aria-required="true">
               <!-- <option disabled selected value="0" style="color: gray;">Wybierz...</option> -->
             </select>
           </div>
 
-          <button type="submit" id="form__submit">DODAJ!</button>
+          <button class="form__submit" type="submit" id="form__submit">DODAJ!</button>
         </form>
+        <hr />
       </aside>
     </div>
     <!-- End your project here-->

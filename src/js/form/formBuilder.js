@@ -31,7 +31,7 @@ class FormBuilder {
         select,
         option,
         {
-          id: category.name.toLowerCase(),
+          id: category.name,
           value: category.name,
         },
         category.name
@@ -49,8 +49,6 @@ export const newFormWithConfig = new FormBuilder(form.id)
   .withFields(form.fields)
   .withSubmit(form.submit)
   .build();
-
-console.log(newFormWithConfig);
 
 newFormWithConfig.onSubmit((e) => {
   e.preventDefault();
