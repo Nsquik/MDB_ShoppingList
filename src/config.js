@@ -1,4 +1,5 @@
 const config = {
+  categoryContainer: 'category__list',
   categories: [
     {
       id: 0,
@@ -23,6 +24,26 @@ const config = {
     {
       id: 5,
       name: 'Napoje',
+    },
+    {
+      id: 6,
+      name: 'Słodycze',
+    },
+    {
+      id: 7,
+      name: 'Owoce Morza',
+    },
+    {
+      id: 8,
+      name: 'Mięso',
+    },
+    {
+      id: 9,
+      name: 'Przyprawy',
+    },
+    {
+      id: 10,
+      name: 'Różne',
     },
   ],
   form: {
