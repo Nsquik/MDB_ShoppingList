@@ -8,7 +8,7 @@ export const loopCategories = (cb) => {
   });
 };
 
-export const appendToParent = (parentNode, node, attributes, text) => {
+export const appendToParent = (parentNode, node, attributes = [], text = '') => {
   Object.entries(attributes).forEach((attr) => {
     node.setAttribute(attr[0], attr[1]);
   });
