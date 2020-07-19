@@ -57,6 +57,13 @@
   @include flex-column(center, center);
   &__name {
   }
+
+  &__quantity,
+  &__quantity-type,
+  &__category {
+    text-align: center;
+    padding: 1rem;
+  }
 }
 
 .item__edit {
