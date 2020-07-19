@@ -5,6 +5,7 @@ const storageFactory = () => {
 
   const addToLocalStorage = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
+    return JSON.stringify(value);
   };
 
   const getLocalStorage = (category) => {
@@ -14,22 +15,22 @@ const storageFactory = () => {
   const removeFromLocalStorage = (category, itemId) => {
     const store = getLocalStorage(category);
     const foundItem = store.find((item) => {
-      return item.id === itemId;
+      return parseInt(item.id, 10) === parseInt(itemId, 10);
     });
 
     if (foundItem) {
-      addToLocalStorage(category, [...store.filter((item) => item.id !== foundItem.id)]);
-    } else {
-      return;
+      return addToLocalStorage(category, [...store.filter((item) => item.id !== foundItem.id)]);
     }
+    return foundItem;
   };
 
   const editFromLocalStorage = (category, itemId, payload) => {
     const store = getLocalStorage(category);
-
     // Tworzy nową tablice. Nie znalazłem bardziej optymalnego rozwiązania. Jeżeli id===itemId zwraca payload, jezeli nie to stary item. Id MUSZĄ BYĆ UNIKALNE.
-    const newStore = store.map((item) => (item.id === itemId ? { ...payload } : item));
-    addToLocalStorage(category, newStore);
+    const newStore = store.map((item) => {
+      return parseInt(item.id, 10) === parseInt(itemId, 10) ? { ...item, ...payload } : item;
+    });
+    return addToLocalStorage(category, newStore);
   };
   // ========= PUBLIC ==========
   return {
@@ -64,7 +65,7 @@ const storageFactory = () => {
     getItem: (category, id) => {
       const catList = getLocalStorage(category);
       const foundItem = catList.find((item) => {
-        return item.id === id;
+        return parseInt(item.id, 10) === parseInt(id, 10);
       });
       return foundItem;
     },

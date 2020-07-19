@@ -37,7 +37,7 @@ const config = {
     },
     {
       id: 7,
-      name: 'Owoce Morza',
+      name: 'Ryby',
       color: '#4AE7EC',
     },
     {

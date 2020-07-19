@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import storageFactory from '@js/storage';
 import { appendToParent, insertOptions, changeSelected } from '@js/utils';
+import UI from '@js/UI';
 
 const store = storageFactory();
 
@@ -11,6 +12,7 @@ const modal = () => {
 
   const buildFormInfo = (id, item, quantity, quantity_type) => {
     modalInfo.innerHTML = `${item} (id: ${id}) ${quantity}${quantity_type}`;
+    modalInfo.dataset.id = id;
   };
   const createDiv = () => {
     return document.createElement('div');
@@ -83,7 +85,6 @@ const modal = () => {
     appendToParent(nodes, fieldName, { class: 'form__field' });
     appendToParent(nodes, fieldQuantity, { class: 'form__field' });
     appendToParent(nodes, fieldCategory, { class: 'form__field' });
-    console.log(nodes.children);
     return nodes.children;
   };
 
@@ -92,7 +93,54 @@ const modal = () => {
     const decline = document.createElement('button');
     const buttons = document.createElement('div');
     appendToParent(buttons, approve, { class: 'modal__approve', type: 'submit' }, 'Edytuj!');
-    appendToParent(buttons, decline, { class: 'modal__decline', type: 'button' }, 'Anuluj!');
+    appendToParent(
+      buttons,
+      decline,
+      {
+        class: 'modal__decline',
+        type: 'button',
+      },
+      'Anuluj!'
+    );
+
+    approve.onclick = (e) => {
+      e.preventDefault();
+
+      const id = document.querySelector('.modal__info').dataset.id;
+      const category = document.querySelector('#modal__category').value;
+      const currentCategory = store.getCurrentCategory();
+      const quantity = document.querySelector('#modal__quantity').value;
+      const item = document.querySelector('#modal__name').value;
+
+      const { quantity_type } = store.getItem(currentCategory, parseInt(id, 10));
+
+      store.editItem(currentCategory, id, {
+        item,
+        quantity,
+        category,
+      });
+
+      if (category !== currentCategory) {
+        store.removeItem(currentCategory, parseInt(id, 10));
+        store.addItem(category, {
+          item,
+          quantity,
+          quantity_type,
+          category,
+          id,
+        });
+      }
+
+      setInvisible();
+
+      UI().renderWithoutCheck(currentCategory);
+    };
+
+    decline.onclick = (e) => {
+      e.preventDefault();
+      setInvisible();
+    };
+
     appendToParent(modalForm, buttons, { class: 'modal__buttons' });
   };
 

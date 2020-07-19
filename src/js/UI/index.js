@@ -35,7 +35,7 @@ const UI = function () {
     storage.setCurrentCategory(category);
     setCategory(category);
     setCategoryQuantity(category);
-    setInfo('Pusto. Dodaj produkty lub przeciągnij inna kategorie.');
+    setInfo('Pusto. Dodaj produkty lub przeciągnij inną kategorię.');
   };
 
   // Renders list and deletes info
@@ -105,7 +105,12 @@ const UI = function () {
             ArrayEmpty(category);
           }
         );
+      } else {
+        throw new Error('Specify category.');
       }
+    },
+    setInfo: (text) => {
+      setInfo(text);
     },
     reset: () => {
       resetList();

@@ -9,11 +9,19 @@
   @include flex-row(center, center);
 
   &__content {
-    height: 45%;
-    width: 20%;
+    padding: 5rem 2rem;
+    height: max-content;
+    width: max-content;
     border-radius: 0.5rem;
     background: #060520;
     @include flex-column(center, center);
+  }
+
+  &__buttons {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
   }
 
   &__approve,
@@ -22,6 +30,7 @@
     font-weight: 700;
     border: none;
     padding: 1rem 2rem;
+    border-radius: 1rem;
     color: white;
   }
 
