@@ -86,7 +86,7 @@ body {
 input {
   padding: 0.5rem;
   border: none;
-  color: #fff;
+  color: $background-color;
   user-drag: none;
   user-select: none;
   -moz-user-select: none;

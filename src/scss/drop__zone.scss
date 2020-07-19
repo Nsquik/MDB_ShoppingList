@@ -1,11 +1,13 @@
 .drop__zone {
   width: 100%;
   height: 100%;
-  margin-left: 5rem;
-  border-radius: 1rem;
+  margin: 1rem 1rem 1rem 5rem;
+  border-radius: 0.5rem;
   background-color: $main-color;
-  @include flex-row(center, center);
+  border: 5px solid transparent;
+
+  @include flex-column(center, center);
   &--in {
-    border: 2px solid #fff;
+    border: 5px solid #404dff;
   }
 }
