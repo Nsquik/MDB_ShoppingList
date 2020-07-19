@@ -1,27 +1,14 @@
+/* eslint-disable func-style */
 /* eslint-disable indent */
 
 import { appendToParent, loopCategory } from '@js/utils';
 import storageFactory from '@js/storage';
-import ItemBuilder from '@js/item';
+import ItemBuilder from '@js/item/ItemBuilder';
+import { setCategory, setInfo, resetList, getItemsList } from '@js/UI/uiHelpers';
 
 const storage = storageFactory();
 
-const UI = () => {
-  const itemsList = document.querySelector('.items__list');
-  const info = document.querySelector('.items__info');
-  const categoryInfo = document.querySelector('.items__category');
-
-  const setCategory = (category) => {
-    categoryInfo.textContent = category;
-  };
-
-  const setInfo = (text) => {
-    info.textContent = text;
-  };
-  const resetList = () => {
-    itemsList.innerHTML = '';
-  };
-
+const UI = function () {
   const renderList = (category) => {
     // eslint-disable-next-line camelcase
     loopCategory(category, ({ item, id, category, quantity, quantity_type }) => {
@@ -31,9 +18,7 @@ const UI = () => {
         .withDelete()
         .build();
 
-      appendToParent(itemsList, article);
-
-      // console.log(nodes);
+      appendToParent(getItemsList(), article);
     });
   };
 

@@ -25,6 +25,7 @@ const categoryPicker = () => {
     initCategories: () => {
       loopCategories((category) => {
         const categoryItem = document.createElement('div');
+        categoryItem.style.background = category.color;
 
         const addedNode = appendToParent(categoryList, categoryItem, {
           class: 'category__item',
