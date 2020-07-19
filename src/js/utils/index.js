@@ -8,6 +8,14 @@ export const loopCategories = (cb) => {
   });
 };
 
+export const loopCategory = (category, cb) => {
+  const data = JSON.parse(localStorage.getItem(category));
+
+  return data.map((item) => {
+    return cb(item);
+  });
+};
+
 export const appendToParent = (parentNode, node, attributes = {}, text = '') => {
   Object.entries(attributes).forEach((attr) => {
     node.setAttribute(attr[0], attr[1]);
@@ -20,5 +28,15 @@ export const appendToParent = (parentNode, node, attributes = {}, text = '') => 
 export const addEvent = (type, cb) => {
   return function (el) {
     el.addEventListener(type, cb);
+  };
+};
+
+export const checkArray = (cbGood, cbBad) => {
+  return function (items) {
+    if (items && items.length) {
+      cbGood();
+    } else {
+      cbBad();
+    }
   };
 };

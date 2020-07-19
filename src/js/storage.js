@@ -67,6 +67,9 @@ const storageFactory = () => {
     setCurrentCategory: (category) => {
       addToLocalStorage('currentCategory', category);
     },
+    getAllCategories: () => {
+      return [...loopCategories((item) => item.name)];
+    },
   };
 };
 

@@ -1,4 +1,5 @@
 import storageFactory from '@js/storage';
+import UI from '@js/UI';
 
 const storage = storageFactory();
 class Form {
@@ -25,6 +26,11 @@ class Form {
       category,
       id: Date.now(),
     });
+
+    const currentCategory = storage.getCurrentCategory();
+    if (currentCategory && currentCategory === category) {
+      UI().renderWithoutCheck(category);
+    }
 
     this.form.reset();
   };
