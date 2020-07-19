@@ -19,7 +19,9 @@ const storageFactory = () => {
     });
 
     if (foundItem) {
-      return addToLocalStorage(category, [...store.filter((item) => item.id !== foundItem.id)]);
+      return addToLocalStorage(category, [
+        ...store.filter((item) => parseInt(item.id, 10) !== parseInt(foundItem.id, 10)),
+      ]);
     }
     return foundItem;
   };

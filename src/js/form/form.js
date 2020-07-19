@@ -1,5 +1,6 @@
 import storageFactory from '@js/storage';
 import UI from '@js/UI';
+import { changeSelected } from '@js/utils';
 
 const storage = storageFactory();
 class Form {
@@ -33,6 +34,7 @@ class Form {
     }
 
     this.form.reset();
+    changeSelected([...this.fields.category.children], category);
   };
 
   validate = () => {

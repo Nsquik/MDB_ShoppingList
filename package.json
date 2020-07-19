@@ -22,16 +22,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdbootstrap/mdb-webpack-starter"
+    "url": "https://github.com/Nsquik/MDB_ShoppingList"
   },
   "keywords": [
     "material design",
     "bootstrap",
     "webpack"
   ],
-  "author": "M.Smolenski <m.smolenski@mdbootstrap.com>",
+  "author": "Kacper Kędzierski.",
   "license": "MIT",
   "devDependencies": {
+    "core-js": "^3.0.0",
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",

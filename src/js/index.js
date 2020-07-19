@@ -1,8 +1,8 @@
 import * as mdb from 'mdb-ui-kit';
 import '@js/form/formBuilder';
 import storageFactory from '@js/storage';
-import categoryPicker from './categoryPicker';
-import dropZone from './dropZone';
+import categoryPicker from '@js/categoryPicker';
+import dropZone from '@js/dropZone';
 
 const storage = storageFactory();
 storage.initialize();
