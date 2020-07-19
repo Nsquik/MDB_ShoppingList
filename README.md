@@ -1,10 +1,8 @@
+## Powered by https://github.com/mdbootstrap/mdb-webpack-starter
+
 ## DEMO: https://shopping-mdb.netlify.app/
 
-# <img src="https://imgur.com/eneyPVz.png">
-
-# <img src="https://imgur.com/p3vLCFf.png">
-
-# Topify
+# Shopping List MDB
 
 Website that let's you manage shopping list.
 
