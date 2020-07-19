@@ -1,4 +1,4 @@
-import { loopCategories, appendToParent } from '@js/utils';
+import { insertOptions } from '@js/utils';
 import Form from '@js/form/form';
 import config from '~/config';
 
@@ -13,6 +13,7 @@ class FormBuilder {
       {},
       ...fields.map((field) => ({ [field.accessName]: document.getElementById(field.id) }))
     );
+    insertOptions(this.fields.category);
     return this;
   }
 
@@ -21,26 +22,7 @@ class FormBuilder {
     return this;
   }
 
-  insertOptions() {
-    const select = this.fields.category;
-
-    loopCategories((category) => {
-      const option = document.createElement('option');
-
-      appendToParent(
-        select,
-        option,
-        {
-          id: category.name,
-          value: category.name,
-        },
-        category.name
-      );
-    });
-  }
-
   build() {
-    this.insertOptions();
     return new Form(this.form, this.fields, this.submit);
   }
 }

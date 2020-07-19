@@ -45,3 +45,20 @@ export const checkArray = (cbGood, cbBad) => {
     }
   };
 };
+
+export const insertOptions = (select, selected = null) => {
+  loopCategories((category) => {
+    const option = document.createElement('option');
+
+    appendToParent(
+      select,
+      option,
+      {
+        id: category.name,
+        value: category.name,
+        selected: category.name === selected && true,
+      },
+      category.name
+    );
+  });
+};

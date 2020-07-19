@@ -1,5 +1,6 @@
 import { addEvent } from '@js/utils';
 import storageFactory from '@js/storage';
+import modal from '@js/modal';
 import UI from '@js/UI';
 
 const storage = storageFactory();
@@ -20,4 +21,9 @@ export const addDeleteEvent = addEvent('click', (e) => {
   storage.removeItem(currCat, parseInt(e.target.id, 10));
 
   currCat && UI().renderWithoutCheck(currCat);
+});
+
+export const addClickEditEvent = addEvent('click', (e) => {
+  modal().buildModal(parseInt(e.target.id, 10));
+  modal().showModal();
 });

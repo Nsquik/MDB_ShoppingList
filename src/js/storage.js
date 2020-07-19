@@ -61,6 +61,13 @@ const storageFactory = () => {
     getItems: (category) => {
       return getLocalStorage(category);
     },
+    getItem: (category, id) => {
+      const catList = getLocalStorage(category);
+      const foundItem = catList.find((item) => {
+        return item.id === id;
+      });
+      return foundItem;
+    },
     getCurrentCategory: () => {
       return getLocalStorage('currentCategory');
     },

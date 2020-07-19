@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { appendToParent } from '@js/utils';
-import { createInfoElements, addDeleteEvent } from '@js/item/itemHelpers';
+import { createInfoElements, addDeleteEvent, addClickEditEvent } from '@js/item/itemHelpers';
 
 class ItemBuilder {
   constructor(id) {
@@ -21,6 +21,7 @@ class ItemBuilder {
     editButton.classList.add('item__edit');
     editButton.id = this.id;
     editButton.textContent = 'Edytuj';
+    addClickEditEvent(editButton);
     this.editButton = editButton;
     return this;
   };
@@ -55,7 +56,6 @@ class ItemBuilder {
     const article = document.createElement('article');
     const itemInfo = document.createElement('section');
     itemInfo.classList.add('item__info');
-    itemInfo.id = this.id;
 
     article.classList.add('item');
 

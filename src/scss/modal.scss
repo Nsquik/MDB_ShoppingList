@@ -1,0 +1,35 @@
+.modal {
+  display: none;
+  visibility: hidden;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba($color: #000, $alpha: 0.7);
+  z-index: 10000;
+  @include flex-row(center, center);
+
+  &__content {
+    height: 45%;
+    width: 20%;
+    border-radius: 0.5rem;
+    background: #060520;
+    @include flex-column(center, center);
+  }
+
+  &__approve,
+  &__decline {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    border: none;
+    padding: 1rem 2rem;
+    color: white;
+  }
+
+  &__approve {
+    background-color: $highlight-color;
+  }
+
+  &__decline {
+    background-color: #e62f2f;
+  }
+}
