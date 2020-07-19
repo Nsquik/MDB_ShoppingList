@@ -13,7 +13,9 @@ const storageFactory = () => {
 
   const removeFromLocalStorage = (category, itemId) => {
     const store = getLocalStorage(category);
-    const foundItem = store.find((item) => item.id === itemId);
+    const foundItem = store.find((item) => {
+      return item.id === itemId;
+    });
 
     if (foundItem) {
       addToLocalStorage(category, [...store.filter((item) => item.id !== foundItem.id)]);
@@ -40,8 +42,6 @@ const storageFactory = () => {
     addItem: (category, item) => {
       if (category && item) {
         addToLocalStorage(category, [...getLocalStorage(category), item]);
-      } else {
-        return;
       }
     },
     removeItem: (category, itemId) => {

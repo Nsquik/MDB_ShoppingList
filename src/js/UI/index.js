@@ -27,7 +27,7 @@ const UI = function () {
     resetList();
     storage.setCurrentCategory(category);
     setCategory(category);
-    setInfo('Pusto. Dodaj produkty');
+    setInfo('Pusto. Dodaj produkty lub przeciągnij inna kategorie.');
   };
 
   // Renders list and deletes info

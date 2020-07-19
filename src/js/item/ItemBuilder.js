@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { appendToParent } from '@js/utils';
+import { createInfoElements, addDeleteEvent } from '@js/item/itemHelpers';
 
 class ItemBuilder {
   constructor(id) {
@@ -9,6 +10,8 @@ class ItemBuilder {
   withDelete = () => {
     const deleteButton = document.createElement('div');
     deleteButton.classList.add('item__delete');
+    deleteButton.id = this.id;
+    addDeleteEvent(deleteButton);
     this.deleteButton = deleteButton;
     return this;
   };
@@ -24,32 +27,16 @@ class ItemBuilder {
   };
 
   withInfo = (quantity, quantity_type, category) => {
-    const nodesList = document.createDocumentFragment();
-
-    const itemQuan = document.createElement('div');
-    const itemQuanType = document.createElement('div');
-    const itemCat = document.createElement('div');
-    const itemId = document.createElement('div');
-
-    appendToParent(
-      nodesList,
-      itemQuan,
-      { id: this.id, class: 'item__quantity' },
-      `Ilość: ${quantity}`
-    );
+    const { nodesList, itemQuan, itemQuanType, itemCat, itemId } = createInfoElements();
+    appendToParent(nodesList, itemQuan, { class: 'item__quantity' }, `Ilość: ${quantity}`);
     appendToParent(
       nodesList,
       itemQuanType,
-      { id: this.id, class: 'item__quantity-type' },
+      { class: 'item__quantity-type' },
       `Jednostka: ${quantity_type}`
     );
-    appendToParent(
-      nodesList,
-      itemCat,
-      { id: this.id, class: 'item__category' },
-      `Kategoria: ${category}`
-    );
-    appendToParent(nodesList, itemId, { id: this.id, class: 'item__category' }, `ID: ${this.id}`);
+    appendToParent(nodesList, itemCat, { class: 'item__category' }, `Kategoria: ${category}`);
+    appendToParent(nodesList, itemId, { class: 'item__category' }, `ID: ${this.id}`);
 
     this.itemInfoNodes = nodesList.children;
     return this;
@@ -60,6 +47,7 @@ class ItemBuilder {
     const itemInfo = document.createElement('section');
 
     article.classList.add('item');
+    article.id = this.id;
 
     const nodesList = document.createDocumentFragment();
 
