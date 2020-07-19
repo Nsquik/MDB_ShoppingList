@@ -21,6 +21,18 @@
   </head>
 
   <body>
+    <div class="modal" id="myModal">
+      <section class="modal__content">
+        <h4>EDYTUJ PRODUKT:</h4>
+        <div class="modal__info">
+          <!-- Marchew (id: 3209813091) 10szt -->
+          ...
+        </div>
+        <div class="modal__form-wrapper">
+          <form id="modal__form" class="form"></form>
+        </div>
+      </section>
+    </div>
     <div class="root">
       <aside class="manager">
         <form id="form" class="form">
@@ -78,16 +90,20 @@
         <hr style="width: 100%;" />
 
         <section class="category__list--wrapper">
+          <h2 style="text-align: center; margin-top: -0.5rem;">Kategorie</h2>
           <article class="category__list" id="category__list">
             <!-- Test markup -->
           </article>
         </section>
       </aside>
       <main class="drop__zone" id="holder">
-        <h1 class="items__category">Warzywa</h1>
+        <div class="category__quantity">Aktualna ilość wszystkich produktów: ...</div>
+        <div class="category__quantity-kg">Ilość (kg): ...</div>
+        <div class="category__quantity-szt">Ilość (szt): ...</div>
 
+        <h1 class="items__category">. . .</h1>
         <section class="items">
-          <p class="items__info">Przeciągnij tutaj kategorie.</p>
+          <span class="items__info">Przeciągnij tutaj kategorię.</span>
           <div class="items__list"></div>
         </section>
       </main>

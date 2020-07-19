@@ -2,6 +2,13 @@ html {
   box-sizing: border-box;
   width: 100%;
   font-size: 62.5%; // 1rem - 10px
+
+  @media only screen and (min-width: '2160px') {
+    font-size: 100%;
+  }
+  @media only screen and (min-width: '3839px') {
+    font-size: 150%;
+  }
   @media only screen and (max-width: '900px') {
     font-size: 55.5%;
   }
@@ -57,7 +64,7 @@ body {
 }
 
 ::selection {
-  background: $main-color;
+  background: $highlight-color;
 }
 
 ::-webkit-scrollbar {

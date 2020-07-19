@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { appendToParent } from '@js/utils';
-import { createInfoElements, addDeleteEvent } from '@js/item/itemHelpers';
+import { createInfoElements, addDeleteEvent, addClickEditEvent } from '@js/item/itemHelpers';
 
 class ItemBuilder {
   constructor(id) {
@@ -13,6 +13,16 @@ class ItemBuilder {
     deleteButton.id = this.id;
     addDeleteEvent(deleteButton);
     this.deleteButton = deleteButton;
+    return this;
+  };
+
+  withEdit = () => {
+    const editButton = document.createElement('div');
+    editButton.classList.add('item__edit');
+    editButton.id = this.id;
+    editButton.textContent = 'Edytuj';
+    addClickEditEvent(editButton);
+    this.editButton = editButton;
     return this;
   };
 
@@ -45,15 +55,16 @@ class ItemBuilder {
   build = () => {
     const article = document.createElement('article');
     const itemInfo = document.createElement('section');
+    itemInfo.classList.add('item__info');
 
     article.classList.add('item');
-    article.id = this.id;
 
     const nodesList = document.createDocumentFragment();
 
     //  Item heading append
     appendToParent(nodesList, this.deleteButton);
     appendToParent(nodesList, this.nameHeading);
+    appendToParent(nodesList, this.editButton);
     appendToParent(nodesList, itemInfo);
 
     [...nodesList.children].forEach((node) => {

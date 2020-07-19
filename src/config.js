@@ -3,8 +3,7 @@ const config = {
   categories: [
     {
       id: 0,
-      name: 'Warzywa',
-      color: '#25DB6E',
+      name: 'Różne',
     },
     {
       id: 1,
@@ -13,8 +12,8 @@ const config = {
     },
     {
       id: 2,
-      name: 'Nabiał',
-      color: '#FFFFFF',
+      name: 'Warzywa',
+      color: '#25DB6E',
     },
     {
       id: 3,
@@ -38,7 +37,7 @@ const config = {
     },
     {
       id: 7,
-      name: 'Owoce Morza',
+      name: 'Ryby',
       color: '#4AE7EC',
     },
     {
@@ -53,7 +52,8 @@ const config = {
     },
     {
       id: 10,
-      name: 'Różne',
+      name: 'Nabiał',
+      color: '#FFFFFF',
     },
   ],
   form: {

@@ -45,3 +45,27 @@ export const checkArray = (cbGood, cbBad) => {
     }
   };
 };
+
+export const changeSelected = (list, wantToSelect) => {
+  list.forEach((item) => {
+    if (item.id === wantToSelect) {
+      item.selected = 'selected';
+    }
+  });
+};
+
+export const insertOptions = (select) => {
+  loopCategories((category) => {
+    const option = document.createElement('option');
+
+    appendToParent(
+      select,
+      option,
+      {
+        id: category.name,
+        value: category.name,
+      },
+      category.name
+    );
+  });
+};
