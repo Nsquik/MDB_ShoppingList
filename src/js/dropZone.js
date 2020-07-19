@@ -1,5 +1,7 @@
-import { addEvent } from '@js/utils';
+import { addEvent, changeSelected } from '@js/utils';
 import UI from '@js/UI';
+
+const select = document.querySelector('#form__category');
 
 const dropZone = () => {
   const zone = document.getElementById('holder');
@@ -8,7 +10,11 @@ const dropZone = () => {
   const addOnDrop = addEvent('drop', (e) => {
     e.preventDefault();
     e.preventDefault();
-    ui.render(e.dataTransfer.getData('text'));
+    const category = e.dataTransfer.getData('text');
+    ui.render(category);
+
+    changeSelected([...select.children], category);
+
     zone.classList.remove('drop__zone--in');
   });
 

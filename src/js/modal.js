@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import storageFactory from '@js/storage';
-import { appendToParent, insertOptions } from '@js/utils';
+import { appendToParent, insertOptions, changeSelected } from '@js/utils';
 
 const store = storageFactory();
 
@@ -31,11 +31,12 @@ const modal = () => {
     return { fieldName, fieldQuantity, fieldCategory };
   };
 
-  const createInputs = () => {
+  const createInputs = (category) => {
     const nameInput = createInput();
     const quantityInput = createInput();
     const categoryInput = document.createElement('select');
     insertOptions(categoryInput);
+    changeSelected([...categoryInput.children], category);
 
     return { nameInput, quantityInput, categoryInput };
   };
@@ -49,7 +50,7 @@ const modal = () => {
 
   const buildFields = (item, category, quantity) => {
     const { fieldName, fieldQuantity, fieldCategory } = createFields();
-    const { nameInput, quantityInput, categoryInput } = createInputs();
+    const { nameInput, quantityInput, categoryInput } = createInputs(category);
     const { nameLabel, quantityLabel, categoryLabel } = createLabels();
 
     appendToParent(fieldName, nameLabel, { for: 'modal__name' }, 'Nazwa');

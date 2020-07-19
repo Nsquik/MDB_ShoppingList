@@ -46,7 +46,15 @@ export const checkArray = (cbGood, cbBad) => {
   };
 };
 
-export const insertOptions = (select, selected = null) => {
+export const changeSelected = (list, wantToSelect) => {
+  list.forEach((item) => {
+    if (item.id === wantToSelect) {
+      item.selected = 'selected';
+    }
+  });
+};
+
+export const insertOptions = (select) => {
   loopCategories((category) => {
     const option = document.createElement('option');
 
@@ -56,7 +64,6 @@ export const insertOptions = (select, selected = null) => {
       {
         id: category.name,
         value: category.name,
-        selected: category.name === selected && true,
       },
       category.name
     );
