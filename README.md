@@ -2,7 +2,7 @@
 
 ## DEMO: https://shopping-mdb.netlify.app/
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0yR8-wXhuRw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Shopp](https://img.youtube.com/vi/0yR8-wXhuRw/0.jpg)](https://www.youtube.com/watch?v=0yR8-wXhuRw&feature=youtu.be 'Shopp')
 
 # Shopping List MDB
 
