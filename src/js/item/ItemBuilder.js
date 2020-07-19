@@ -16,6 +16,15 @@ class ItemBuilder {
     return this;
   };
 
+  withEdit = () => {
+    const editButton = document.createElement('div');
+    editButton.classList.add('item__edit');
+    editButton.id = this.id;
+    editButton.textContent = 'Edytuj';
+    this.editButton = editButton;
+    return this;
+  };
+
   withName = (name) => {
     const nameHeading = document.createElement('h1');
     nameHeading.classList.add('item__name');
@@ -45,15 +54,17 @@ class ItemBuilder {
   build = () => {
     const article = document.createElement('article');
     const itemInfo = document.createElement('section');
+    itemInfo.classList.add('item__info');
+    itemInfo.id = this.id;
 
     article.classList.add('item');
-    article.id = this.id;
 
     const nodesList = document.createDocumentFragment();
 
     //  Item heading append
     appendToParent(nodesList, this.deleteButton);
     appendToParent(nodesList, this.nameHeading);
+    appendToParent(nodesList, this.editButton);
     appendToParent(nodesList, itemInfo);
 
     [...nodesList.children].forEach((node) => {

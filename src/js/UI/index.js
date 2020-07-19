@@ -4,7 +4,13 @@
 import { appendToParent, loopCategory } from '@js/utils';
 import storageFactory from '@js/storage';
 import ItemBuilder from '@js/item/ItemBuilder';
-import { setCategory, setInfo, resetList, getItemsList } from '@js/UI/uiHelpers';
+import {
+  setCategory,
+  setInfo,
+  resetList,
+  getItemsList,
+  setCategoryQuantity,
+} from '@js/UI/uiHelpers';
 
 const storage = storageFactory();
 
@@ -16,6 +22,7 @@ const UI = function () {
         .withName(item)
         .withInfo(quantity, quantity_type, category, id)
         .withDelete()
+        .withEdit()
         .build();
 
       appendToParent(getItemsList(), article);
@@ -27,6 +34,7 @@ const UI = function () {
     resetList();
     storage.setCurrentCategory(category);
     setCategory(category);
+    setCategoryQuantity(category);
     setInfo('Pusto. Dodaj produkty lub przeciągnij inna kategorie.');
   };
 
@@ -35,6 +43,7 @@ const UI = function () {
     resetList();
     storage.setCurrentCategory(category);
     setCategory(category);
+    setCategoryQuantity(category);
     renderList(category);
     setInfo('');
   };
