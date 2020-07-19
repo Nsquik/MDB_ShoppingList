@@ -21,7 +21,6 @@
   </head>
 
   <body>
-    <!-- Start your project here-->
     <div class="root">
       <aside class="manager">
         <form id="form" class="form">
@@ -76,7 +75,7 @@
 
           <button class="form__submit" type="submit" id="form__submit">DODAJ!</button>
         </form>
-        <hr />
+        <hr style="width: 100%;" />
 
         <section class="category__list--wrapper">
           <article class="category__list" id="category__list">
@@ -84,9 +83,15 @@
           </article>
         </section>
       </aside>
-      <main class="drop__zone"></main>
+      <main class="drop__zone" id="holder">
+        <h1 class="items__category">Warzywa</h1>
+
+        <section class="items">
+          <p class="items__info">Przeciągnij tutaj kategorie.</p>
+          <div class="items__list"></div>
+        </section>
+      </main>
     </div>
-    <!-- End your project here-->
   </body>
   <!-- Main js file -->
   <script type="text/javascript" src="js/index.min.js"></script>

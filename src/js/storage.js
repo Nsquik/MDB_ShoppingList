@@ -1,9 +1,10 @@
-import { loopCategories } from '@js/utlis';
+import { loopCategories } from '@js/utils';
 
 const storageFactory = () => {
   // ======== PRIVATE =========
-  const addToLocalStorage = (category, value) => {
-    localStorage.setItem(category, JSON.stringify(value));
+
+  const addToLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
   };
 
   const getLocalStorage = (category) => {
@@ -12,7 +13,9 @@ const storageFactory = () => {
 
   const removeFromLocalStorage = (category, itemId) => {
     const store = getLocalStorage(category);
-    const foundItem = store.find((item) => item.id === itemId);
+    const foundItem = store.find((item) => {
+      return item.id === itemId;
+    });
 
     if (foundItem) {
       addToLocalStorage(category, [...store.filter((item) => item.id !== foundItem.id)]);
@@ -30,7 +33,8 @@ const storageFactory = () => {
   };
   // ========= PUBLIC ==========
   return {
-    initializeCategories: () => {
+    initialize: () => {
+      addToLocalStorage('currentCategory', null);
       loopCategories(({ name }) => {
         !getLocalStorage(name) && addToLocalStorage(name, []);
       });
@@ -38,8 +42,6 @@ const storageFactory = () => {
     addItem: (category, item) => {
       if (category && item) {
         addToLocalStorage(category, [...getLocalStorage(category), item]);
-      } else {
-        return;
       }
     },
     removeItem: (category, itemId) => {
@@ -55,6 +57,18 @@ const storageFactory = () => {
       } else {
         return;
       }
+    },
+    getItems: (category) => {
+      return getLocalStorage(category);
+    },
+    getCurrentCategory: () => {
+      return getLocalStorage('currentCategory');
+    },
+    setCurrentCategory: (category) => {
+      addToLocalStorage('currentCategory', category);
+    },
+    getAllCategories: () => {
+      return [...loopCategories((item) => item.name)];
     },
   };
 };

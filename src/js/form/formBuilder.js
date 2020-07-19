@@ -1,4 +1,4 @@
-import { loopCategories, appendToParent } from '@js/utlis';
+import { loopCategories, appendToParent } from '@js/utils';
 import Form from '@js/form/form';
 import config from '~/config';
 
