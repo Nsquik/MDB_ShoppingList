@@ -5,12 +5,20 @@ const { categoryContainer } = config;
 
 const categoryPicker = () => {
   const categoryList = document.getElementById(categoryContainer);
+  const dropZone = document.getElementById('holder');
+
   const addDragStart = addEvent('dragstart', (e) => {
     e.dataTransfer.setData('text', e.target.id);
+    dropZone.classList.add('drop__zone--in');
+  });
+
+  const addDragEnd = addEvent('dragend', () => {
+    dropZone.classList.remove('drop__zone--in');
   });
 
   const addEventsToCategory = (el) => {
     addDragStart(el);
+    addDragEnd(el);
   };
 
   return {

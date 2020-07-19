@@ -19,15 +19,11 @@ const dropZone = () => {
   const addOnDragEnter = addEvent('dragenter', (e) => {
     e.preventDefault();
     e.stopPropagation();
-
-    zone.classList.add('drop__zone--in');
   });
 
   const addOnDragLeave = addEvent('dragleave', (e) => {
     e.preventDefault();
     e.stopPropagation();
-
-    zone.classList.remove('drop__zone--in');
   });
 
   return {

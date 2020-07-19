@@ -1,25 +1,39 @@
 /* eslint-disable indent */
 
 import { appendToParent, loopCategory } from '@js/utils';
-import storageFactory from './storage';
+import storageFactory from '@js/storage';
+import ItemBuilder from '@js/item';
 
 const storage = storageFactory();
 
 const UI = () => {
-  const items = document.querySelector('.items__list');
+  const itemsList = document.querySelector('.items__list');
   const info = document.querySelector('.items__info');
+  const categoryInfo = document.querySelector('.items__category');
+
+  const setCategory = (category) => {
+    categoryInfo.textContent = category;
+  };
 
   const setInfo = (text) => {
     info.textContent = text;
   };
   const resetList = () => {
-    items.innerHTML = '';
+    itemsList.innerHTML = '';
   };
 
   const renderList = (category) => {
-    loopCategory(category, ({ item }) => {
-      const newItem = document.createElement('article');
-      appendToParent(items, newItem, { class: 'item' }, item);
+    // eslint-disable-next-line camelcase
+    loopCategory(category, ({ item, id, category, quantity, quantity_type }) => {
+      const article = new ItemBuilder(id)
+        .withName(item)
+        .withInfo(quantity, quantity_type, category, id)
+        .withDelete()
+        .build();
+
+      appendToParent(itemsList, article);
+
+      // console.log(nodes);
     });
   };
 
@@ -27,6 +41,7 @@ const UI = () => {
   const ArrayEmpty = (category) => {
     resetList();
     storage.setCurrentCategory(category);
+    setCategory(category);
     setInfo('Pusto. Dodaj produkty');
   };
 
@@ -34,6 +49,7 @@ const UI = () => {
   const ArrayGood = (category) => {
     resetList();
     storage.setCurrentCategory(category);
+    setCategory(category);
     renderList(category);
     setInfo('');
   };

@@ -16,11 +16,16 @@ export const loopCategory = (category, cb) => {
   });
 };
 
-export const appendToParent = (parentNode, node, attributes = {}, text = '') => {
-  Object.entries(attributes).forEach((attr) => {
-    node.setAttribute(attr[0], attr[1]);
-  });
-  node.textContent = text;
+export const appendToParent = (parentNode, node, attributes, text) => {
+  if (attributes) {
+    Object.entries(attributes).forEach((attr) => {
+      node.setAttribute(attr[0], attr[1]);
+    });
+  }
+
+  if (text) {
+    node.textContent = text;
+  }
   parentNode.appendChild(node);
   return node;
 };
